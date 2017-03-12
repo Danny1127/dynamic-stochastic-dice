@@ -106,7 +106,18 @@ for t = 2:size(s_base,2)+1 % # loop through years
         
         % Build quadrature for feedback, s_base{t} is the set quadrature
         % nodes of time t+1's state with the time t information set
-        feedback_nodes_quad = qnwnorm(Params.nqnodes,s_base{t-1}(i,7),s_base{t-1}(i,8));
+        %% add check for variance
+        if LogicalOpts.fb_unc
+            if s(t,8) > 0
+                feedback_nodes_quad = qnwnorm(Params.nqnodes,s_base{t-1}(i,7),s_base{t-1}(i,8));
+            else
+                feedback_nodes_quad = s_base{t-1}(i,7)*ones(Params.nqnodes,1);
+
+            end
+        else
+            feedback_nodes_quad  = Params.fb_cert*ones(Params.nqnodes,1);
+        end
+        
         
         % Maximize the Bellman at this quadrature node for the state in
         % time t+1
