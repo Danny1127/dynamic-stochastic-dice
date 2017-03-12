@@ -118,11 +118,11 @@ for ii = 1:size(q,1)
     if g(1,8)<Params.smin(8) %check variance
         var_jumps_down = var_jumps_down+1;
         outbound(end+1,:) = [8 -1 0 s(ii,:) g(1,:)];
-        outboundstring(end+1,:)= {'k' 'down' 'it:' '|' 'node' num2str(ii) 'unc:' 'none' '|' 'jump: [' mat2str(s(ii,1:8),4) '] to ['  mat2str(g(1,1:8),4) ']'};
+        outboundstring(end+1,:)= {'var' 'down' 'it:' '|' 'node' num2str(ii) 'unc:' 'none' '|' 'jump: [' mat2str(s(ii,1:8),4) '] to ['  mat2str(g(1,1:8),4) ']'};
     elseif g(1,8)>Params.smax(8)
         var_jumps_up = var_jumps_up +1;
         outbound(end+1,:) = [8 1 0 s(ii,:) g(1,:)];
-        outboundstring(end+1,:)= {'k' 'up' 'it:'  '|' 'node' num2str(ii) 'unc:' 'none' '|' 'jump: [' mat2str(s(ii,1:8),4) '] to ['  mat2str(g(1,1:8),4) ']'};
+        outboundstring(end+1,:)= {'var' 'up' 'it:'  '|' 'node' num2str(ii) 'unc:' 'none' '|' 'jump: [' mat2str(s(ii,1:8),4) '] to ['  mat2str(g(1,1:8),4) ']'};
     end
 end
 
