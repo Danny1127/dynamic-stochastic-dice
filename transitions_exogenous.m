@@ -21,8 +21,6 @@ VarsExog.Ltn(:,1) = Params.L0+(Params.Linf-Params.L0)*(VarsExog.gL(2:end));
 
 % Technological growth rate at each time node
 VarsExog.gA(:,1) = Params.gA_N*10*exp(-Params.dA*Params.timestep*(0:(horizon/Params.timestep+1)));
-%%
-%??VarsExog.gA(:,1) = Params.gA_N*10*exp(-Params.dA*Params.timestep*(1:(horizon/Params.timestep+1)));??
 
 VarsExog.At(1) = Params.A0_N;
 
